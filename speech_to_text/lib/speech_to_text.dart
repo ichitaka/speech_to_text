@@ -495,15 +495,6 @@ class SpeechToText {
     }
     var pauseFor = initialPauseFor;
     var listenFor = initialListenFor;
-    if (null != pauseFor) {
-      var remainingMillis = pauseFor.inMilliseconds -
-          (ignoreElapsedPause ? 0 : _elapsedSinceSpeechEvent);
-      pauseFor = Duration(milliseconds: max(remainingMillis, 0));
-    }
-    if (null != listenFor) {
-      var remainingMillis = listenFor.inMilliseconds - _elapsedListenMillis;
-      listenFor = Duration(milliseconds: max(remainingMillis, 0));
-    }
     Duration minDuration;
     if (null == pauseFor) {
       _listenFor = Duration(milliseconds: listenFor!.inMilliseconds);
